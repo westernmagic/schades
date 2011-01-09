@@ -1,0 +1,552 @@
+\documentclass[12pt,a4paper,twoside,openany]{report}
+
+\usepackage[paper=a4paper, left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+
+\usepackage{helvet}
+
+\usepackage[usenames,dvipsnames]{color}
+
+\usepackage{hyperref}
+
+\usepackage{remreset}
+\makeatletter
+\@removefromreset{footnote}{chapter}
+\makeatother
+
+\usepackage{setspace}
+\onehalfspace
+
+\usepackage[table]{xcolor}
+
+\usepackage{listings}
+\lstloadlanguages{PHP}
+\lstset{	language=PHP ,
+			alsolanguage=SQL ,
+			morecomment=[s]{/*}{*/},
+			morecomment=[s]{/**}{*/} ,
+			morestring=[b]' ,
+			morestring=[b]{''} , 
+			keywords=[1]{} ,
+			breaklines=true ,
+			breakatwhitespace=true ,
+			showstringspaces=false ,
+			basicstyle=\ttfamily\small ,
+			commentstyle=\color{Gray} ,
+			numbers=left ,
+			numberstyle=\tiny ,
+			stepnumber=1 ,
+			numbersep=5pt ,
+			tabsize=4}
+
+\usepackage{footmisc}
+\renewcommand\footnotelayout{\fontfamily{phv}\selectfont}
+
+\usepackage[compact]{titlesec}
+
+\usepackage{sectsty}
+\allsectionsfont{\fontfamily{phv}\selectfont}
+
+\usepackage{tocloft}
+\newcommand{\cftXfont}{\fontfamily{phv}\selectfont}
+\newcommand{\cftXleader}{\fontfamily{phv}\selectfont}
+\newcommand{\cftXpagefont}{\fontfamily{phv}\selectfont}
+
+\usepackage{mdwlist}
+
+% \usepackage{fancyhdr}
+% \fancypagestyle{plain}{%
+% 	\clearpage
+% 	\fancyfoot{}
+% 	\fancyfoot[CE,CO]{\fontfamily{phv}\selectfont\thepage}
+% 	\renewcommand{\headrulewidth}{0 pt}
+% 	\renewcommand{\footrulewidth}{0 pt}
+% }
+
+\usepackage{opcit}
+
+\begin{document}
+\fontfamily{phv}\selectfont
+
+\title{schades \\ School Administration e-System \\ \large{A back-end
+approach to absence administration} \\ \large{Final Paper}} \author{Author:
+Michal Sudwoj, 6bG, Kantonsschule Rychenberg \\ Supervision: Urs M\"{u}ller,
+Kantonsschule Rychenberg}
+\date{Submitted: December 1, 2009}
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+\newpage
+\tableofcontents
+
+\chapter{Introduction}
+
+\section{How To Use This Paper}
+Acronyms and specialist terms written in \textit{italic} are explained in
+Appendix \ref{glossary} Glossary.
+
+\section{Aims}
+This project aims to create an \textit{absence unit} administration online
+appliction, provide developer and user clarity, functionality and flexibility, so that it
+can be integrated into the school \textit{intranet} with ease.
+
+\section{History}
+A way of managing the \textit{absence units}\footnote{Cf.
+\ref{situation} Current Situation} exists, but it lacks clarity for students.
+Some years ago a final paper\cite{gubler} attempting to create a clear absence
+unit administration system was written, but sadly the application was not
+introduced due to the lack of portability.
+
+\section{Current Situation}
+\label{situation}
+The current system is a mixture of an online
+\textit{MySQL}\footnote{Cf. \ref{mysql} MySQL} database, where the absence data
+is stored, and a local \textit{FileMaker} database, where the data is managed and evaluated.
+Information input is done over an \textit{intranet} page. The local database is
+kept updated by manually running an import script. \textit{Absence unit}
+administrators evaluate the data manually, printing and distributing large amounts forms or
+letters in order to inform the pupils. Students can only see their current
+amount of \textit{absence units} by retrieving a table held by the form teacher
+or by requesting a printout from the administrator.
+
+\chapter{Solution}
+
+\section{Creation Process}
+I wanted to create a useful application as my final paper. Most of my projects
+are born from the desire to make things better. During consultations with Mr
+M\"{u}ller, the subject of absence administration came up. This had been a
+great issue in my form, and so I decided to take the project. Judging by the
+amount of people asking me about the state of my final paper, I believe I made
+the right choice.
+
+During development, the programme was re-written three times as it got more
+and more complex: first from one file into two, then into \textit{class} files
+(modularisation), and lastly \textit{AJAX} was introduced.
+
+\section{Technologies Used}
+
+\subsection{MySQL}
+\label{mysql}
+\textit{MySQL} is ``the most popular \textit{Open Source} \textit{SQL} database
+management system.''\cite{mysql} The school database is a \textit{MySQL} database.
+
+\subsection{PHP}
+\label{php}
+\textit{PHP}, a retronym for \textit{PHP}: \textit{Hypertext}
+\textit{Preprocessor}, ``is a widely-used \textit{open source} general-purpose
+[\textit{server-side}] scripting language that is especially suited for web
+development and can be embedded into \textit{HTML}.''\cite{php_what}
+\textit{PHP} is commonly used to fetch data from a database and to display it,
+or to manipulate data and return it in another format(e.g.\ a \textit{PDF}
+document). The school \textit{intranet} as well as the timetable use this
+technology, it was therefore wise to employ the same language.
+
+\subsection{AJAX}
+\label{ajax}
+\textit{AJAX} ``(shorthand for asynchronous \textit{JavaScript} and
+\textit{XML}) is a group of interrelated web development techniques used on the
+\textit{client-side} to create interactive web applications.''\cite{ajax}
+\textit{AJAX} allows for the loading of data without refreshing the whole web
+page, thus drastically reducing loading time.
+
+\subsection{PDF}
+\label{pdf}
+\textit{PDF} (Portable Document Format) is ``a system for storing and moving documents
+between computers that only allows the contents to be viewed or printed, or a
+document created using this system.''\cite{pdf} Being portable and wide-spread,
+it makes a great tool for writing printable documents.
+
+\subsection{\LaTeX{}}
+\label{latex}
+\textit{\LaTeX{}} ``is a high-quality typesetting system, \ldots the de facto standard
+for the communication and publication of scientific documents.''\cite{latex}
+This paper is written in \textit{\LaTeX{}}.
+
+\section{Programmes Used}
+\subsection{XAMPP}
+\label{xampp}
+\textit{XAMPP}\footnote{acronym for X (cross-platform), \textit{Apache},
+\textit{MySQL}, \textit{PHP},
+\textit{Perl}}\footnote{\url{http://apachefriends.com}} is an open source
+software bundle consisting mainly of the \textit{Apache} web server, the
+\textit{MySQL} database and \textit{PHP}.
+
+\subsection{libTidy}
+\label{tidy}
+The \textit{libTidy}\footnote{\url{http://tidy.sourceforge.net/}} library and
+the \textit{HTMLTidy} extension for \textit{PHP} help clean-up
+\textit{PHP}-generated \textit{HTML} code, that is it closes unclosed
+\textit{tags}, adds required \textit{elements} and indents code.
+
+\subsection{TCPDF}
+\label{tcpdf}
+\textit{TCPDF}\footnote{\url{http://www.tcpdf.net}} is a \textit{PHP} class to
+create \textit{PDF} files. It is written in pure \textit{PHP}, making it
+system-independent, and it includes functions to turn \textit{HTML} code into
+\textit{PDF} documents.
+
+\subsection{Notepad++}
+\label{npp}
+\textit{Notepad++}\footnote{\url{http://notepad-plus.sourceforge.net/}} is a
+more advanced version of the \textit{Notepad} application for
+\textit{Windows\texttrademark}. It includes syntax-highlighting and
+autocompletion. This was my main development environment on
+\textit{Windows\texttrademark}.
+
+\subsection{eclipse}
+\label{eclipse}
+\textit{eclipse}\footnote{\url{http://www.eclipse.org}} is a popular and
+portable \textit{IDE}. Its many plug-ins allow for eased development in
+different programming languages.
+
+\subsection{SourceForge}
+\label{sf}
+\textit{SourceForge}\footnote{\url{http://www.sourceforge.net}} is a free
+hosting solution for open source programmes. It is where the source code of this
+application is published.
+
+\section{Concepts and Features}
+
+\subsection{Structure}
+The files adding up to the application can be pidgeon-holed into the following
+categories:
+\begin{itemize}
+  \item \textbf{Class:} represents an object and provides an interface for interaction
+or groups together functions of a similar use
+  \item \textbf{Script:} operates unseen for the end user, usually computing or writing output to display
+  \item \textbf{Web Page:} provides the user interface
+  \item \textbf{Setting:} configuration files
+  \item \textbf{Documentation}
+  \item \textbf{Resources} such as images or templates.
+\end{itemize}
+\begin{tabular}{ | l | l | l | }
+\hline
+\cellcolor[gray]{0.7}Classes & \cellcolor[gray]{0.7}Scripts & \cellcolor[gray]{0.7} Web Pages \\
+\hline class/Absence.php & abs\_saver.php & index.php \\ \hline
+class/Course.php & ajax\_excuse.php & login.php \\ \hline
+class/Date.php & ajax\_main.php & \cellcolor{black}\\ \hline
+class/DB.php & ajax\_paper.php & \cellcolor[gray]{0.7}Settings \\ \hline
+class/Excuse.php & ajax\_queue.php & settings/settings.php \\ \hline
+class/Form.php & ajax\_related.php & settings/styles.css \\ \hline
+class/Paper.php & ajax\_schedule.php & settings/db/mat.php \\ \hline
+class/Person.php & ajax\_student.php & \cellcolor{black}\\ \hline
+class/Printer.php & ajax\_teacher.php & \cellcolor[gray]{0.7}Documentation \\ \hline
+class/Queue.php & ajax.js & agpl.txt \\ \hline
+\cellcolor{black} & excuse\_action.php & doc/document.tex \\ \hline
+\cellcolor[gray]{0.7}Resources & logout.php & doc/ref.bib \\ \hline
+img/agplv3-155x51.png & paper\_set.php & \cellcolor{black}\\ \hline
+img/logo.jpg & queue\_action.php & \cellcolor[gray]{0.7}Libraries\\ \hline
+\cellcolor{black} & \cellcolor{black} & /lib/tcpdf \\ \hline
+\end{tabular}
+
+\subsection{Absence Unit Calculating Algorithm}
+One of the biggest challenges in the making of this application was the
+development of a fair, accurate and reliable alogithm to automatically compute
+the number of \textit{absence units} a student received. It is not enough to simply
+count each single lesson the student was absent, since lengthy periods of uninterrupted absence cost
+a maximum of four \textit{absence units}.
+
+To solve this problem two concepts were introduced. Firstly, a student is
+neither assumed to have attended each lesson nor not to have attended.
+Secondly, the idea of blocks was introduced. A block is the longest period of
+proved possible uninterrupted absence in a school week. Put simply, the
+alogrithm searches each week for lessons where the student was absent and
+assumes that the student was also absent in-between these lessons unless he or
+she has been proven (i.e.\ a lesson has been marked as) present.
+
+This has an obvious disadvantage for students, as it violates the
+presumption of innocence (presence). This sacrifice is neccessary to guarantee a
+fair evaluation even when not all absences are entered. An illustrative example:
+a student falls ill and misses a day of school. One of his teachers does not
+notice that he is not there and, believing him to be present, does not enter any absences since the system
+assumes by default that all students are present. The system then gives the
+student eight absence units, since he missed two blocks of five lessons each.
+That would not happen in the current system, since the unentered absence would
+still be counted to the block, making it a block of eleven lessons.
+
+Of course, neither system is perfect. One could take the best of both and create
+a system based on statistic evaluation and probability, but that would require
+much more time than was available.
+
+\subsection{Queue}
+A new feature is the queue. It displays a list of actions requiring user
+interaction, e.g.\ promotion to a higher level. The idea is based on \textit{FaceBook}
+``Notifications'', which display latest activities concerning the user.
+
+\section{Licencing}
+I decided to release this programme under the \textit{AGPL} v3\footnote{The
+full text of the licence is available from
+\url{http://www.fsf.org/licensing/licenses/agpl-3.0.html}}, an
+\textit{open source licence}, as it is my belief that \textit{open source}
+software has advantages over \textit{closed source} software. Firstly, it
+allows other developers to build upon one's work. Secondly, I believe
+\textit{open source} software to be more secure, as more pressure is exerted on
+the developer to patch any security holes.
+
+\chapter{Conclusion}
+
+\section{Future}
+The application still lacks some features that were planned and it
+needs to be integrated into the school \textit{intranet}. The programme,
+although designed to minimize the effects of no being used, will not
+work without the support of the school staff. I therefore ask all staff members
+to consider trying out the system when it is released to the public.
+
+I hope that the modular character
+of the project will allow for faciliated continuation. I would imagine that a
+personalised calendar, a form register, a homework planner, a school diary or
+course administration software could be coded with ease; the creation of a
+grade administration application would be more challenging. I hope to extend
+this project in the above mentioned directions myself.
+
+\section{Aknowledgements}
+I wish to thank Mr Urs M\"{u}ller, my supervisor and tutor, for his aid and
+co-operation, as well as Mr Hans-Peter Pleisch for explaining me the current
+\textit{absence unit} administration system and the tasks of an administrator. I would
+also like to thank my family for their supporting spirit when things did not go
+as planned, and my teachers and my form for taking interest in this project.
+\appendix
+
+\chapter{Glossary}
+\label{glossary}
+\begin{basedescript}{\desclabelstyle{\fontfamily{phv}\selectfont}}
+
+\item[Absence unit] A unit of measure for a students absence. A lesson of
+absence usually corresponds to one absence unit.
+
+\item[AGPL] Affero General Public License. An \textit{open source licence}
+designed for web applications.
+
+\item[AJAX] Cf. \ref{ajax} AJAX.
+
+\item[Apache] Apache \textit{HTTP} Server. A very popular web server.
+
+\item[Client-sided script] Scripts that are executed on the
+client machine (e.g.\ PC) and have access to the client's resources. Cf.
+\textit{server-side}.
+
+\item[Class] A template or blueprint defining the properties and methods
+(actions) that objects of the class have.
+
+\item[Closed source software] Software that is ``neither free nor \textit{open
+source}.''\cite{closed_source_wiki} Cf. \textit{open source}.
+
+\item[eclipse] Cf. \ref{eclipse} eclipse.
+
+\item[element] Cf. \textit{HTML element}.
+
+\item[FaceBook] A popular social networking website
+\footnote{\url{http://www.facebook.com/}}.
+
+\item[FileMaker] A proprietary database system.
+
+\item[HTML] Hypertext Markup Language. The language web pages
+are written in.
+
+\item[HTML element] Consists of a start tag, content, and an end tag. Cf.
+\textit{HTML tag}.
+
+\item[HTML tag] Content enclosed in tags is treated accordingly to the type of
+tag used. Tags start with the \textless character and end in the \textgreater
+character, e.g.\ \textless{}table\textgreater.
+
+\item[HTMLTidy] Cf. \ref{tidy} libTidy.
+
+\item[HTTP] \textit{Hypertext} Transfer Protocol. 
+
+\item[Hypertext] Cf. \textit{HTML}.
+
+\item[IDE] Integrated Development Environment. An application or
+software bundle consisting of ``a source code editor, a compiler and/or an
+interpreter, build automation tools [and] a debugger.''\cite{ide_wiki}
+
+\item[Intranet] A computer network used to share information within an
+organisation.
+
+\item[JavaScript] A scripting language
+
+\item[\LaTeX{}] Cf. \ref{latex} \LaTeX{}.
+
+\item[libTidy] Cf. \ref{tidy} libTidy.
+
+\item[MySQL] Cf. \ref{mysql} MySQL.
+
+\item[Notepad] A native text editor for \textit{Windows\texttrademark}.
+
+\item[Notepad++] Cf. \ref{npp} Notepad++.
+
+\item[Open source software] Software that complies to the Open Source
+Definition\footnote{\url{http://opensource.org/docs/osd}}. This software must
+be free and its source code available to the public. Cf. \textit{closed source}.
+
+\item[Open source licence] A licence which allows for free modification and
+redistribution of a programmes source code. Cf. \textit{open source}.
+
+\item[PDF] Portable Document Format. Cf. \ref{pdf} PDF.
+
+\item[Perl] A general-purpose programming language.
+
+\item[PHP] Cf. \ref{php} PHP.
+
+\item[Preprocessor] A programme whose output is another programmes input.
+
+\item[Server-sided script] Scripts that are executed on the server and have
+access to server resources. Cf. \textit{client-side}.
+
+\item[SourceForge] Cf. \ref{sf} SourceForge.
+
+\item[SQL] Stuctured Query Language. A computer language used for the managing
+of databases.
+
+\item[Tag] Cf. \textit{HTML tag}.
+
+\item[TCPDF] Cf. \ref{tcpdf} TCPDF.
+
+\item[Windows\texttrademark] A popular operating system from Microsoft Corp.
+
+\item[XAMMP] Cf. \ref{xampp} XAMPP.
+
+\item[XML] eXtensible Markup Language. A computer language used for the
+structuring of data.
+
+\end{basedescript}
+
+\chapter{Programmes Used in Development}
+\section{Platform Independent}
+\begin{itemize}
+
+\item Texclipse Plugin 1.3.0, 25/11/2009, eclipse update site
+\url{http://texlipse.sourceforge.net/}
+
+\end{itemize}
+
+\section{Windows}
+\begin{itemize}
+
+\item XAMPP for Windows, 03/05/2009,
+\url{http://ch2.php.net/get/php-5.3.1.tar.bz2/from/a/mirror}
+
+\item Notepad++ 5.3.1, 03/05/2009,
+\url{http://sourceforge.net/projects/notepad-plus/files/notepad%2B%2B%20releases%20binary/npp%205.3.1%20bin/npp.5.3.1.Installer.exe/download}
+
+\item MikTeX 2.7, 25/11/2009, \url{http://miktex.org/2.7/setup}
+
+\end{itemize}
+
+\section{Linux}
+\begin{itemize}
+
+\item XAMPP for Linux 1.7.2, 10/08/2009,
+\url{http://sourceforge.net/projects/xampp/files/XAMPP%20Linux/xampp-linux-1.7.2.tar.gz/download}
+
+\item XAMPP for Linux Development Package 1.7.2, 10/08/2009,
+\url{http://sourceforge.net/projects/xampp/files/XAMPP%20Linux/xampp-linux-devel-1.7.2.tar.gz/download}
+
+\item Eclipse for PHP Developers, Eclipse Galileo 3.5.1 (SR1),
+\url{http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/galileo/SR1/eclipse-php-galileo-SR1-linux-gtk.tar.gz&url=http://mirror.switch.ch/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-php-galileo-SR1-linux-gtk.tar.gz&mirror_id=63}
+
+\item PHP 5.3.1 (inculding HTMLTidy), 25/11/2009,
+\url{http://ch2.php.net/get/php-5.3.1.tar.bz2/from/a/mirror}
+
+\end{itemize}
+
+\renewcommand{\bibname}{\chapter{Sources}\section{Primary Sources}}
+\bibliographystyle{plain}
+\bibliography{ref}
+
+\chapter{Source Code}
+The most recent source code is availible for download from
+\url{http://www.sourceforge.net/projects/schades}.
+
+\lstlistoflistings
+\newpage\section{class/Absence.php}
+\lstinputlisting{../class/Absence.php}
+
+\newpage\section{class/Calendar.php}
+\lstinputlisting{../class/Calendar.php}
+
+\newpage\section{class/Course.php}
+\lstinputlisting{../class/Course.php}
+
+\newpage\section{class/Date.php}
+\lstinputlisting{../class/Date.php}
+
+\newpage\section{class/DB.php}
+\lstinputlisting{../class/DB.php}
+
+\newpage\section{class/Excuse.php}
+\lstinputlisting{../class/Excuse.php}
+
+\newpage\section{class/Form.php}
+\lstinputlisting{../class/Form.php}
+
+\newpage\section{class/Paper.php}
+\lstinputlisting{../class/Paper.php}
+
+\newpage\section{class/Period.php}
+\lstinputlisting{../class/Period.php}
+
+\newpage\section{class/Person.php}
+\lstinputlisting{../class/Person.php}
+
+\newpage\section{class/Printer.php}
+\lstinputlisting{../class/Printer.php}
+
+\newpage\section{class/Queue.php}
+\lstinputlisting{../class/Queue.php}
+
+\newpage\section{abs\_saver.php}
+\lstinputlisting{../abs_saver.php}
+
+\newpage\section{ajax\_excuse.php}
+\lstinputlisting{../ajax_excuse.php}
+
+\newpage\section{ajax\_main.php}
+\lstinputlisting{../ajax_main.php}
+
+\newpage\section{ajax\_queue.php}
+\lstinputlisting{../ajax_queue.php}
+
+\newpage\section{ajax\_related.php}
+\lstinputlisting{../ajax_related.php}
+
+\newpage\section{ajax\_schedule.php}
+\lstinputlisting{../ajax_schedule.php}
+
+\newpage\section{ajax\_student.php}
+\lstinputlisting{../ajax_student.php}
+
+\newpage\section{ajax\_teacher.php}
+\lstinputlisting{../ajax_teacher.php}
+
+\newpage\section{ajax.js}
+\lstinputlisting{../ajax.js}
+
+\newpage\section{excuse\_action.php}
+\lstinputlisting{../excuse_action.php}
+
+\newpage\section{index.php}
+\lstinputlisting{../index.php}
+
+\newpage\section{login.php}
+\lstinputlisting{../login.php}
+
+\newpage\section{logout.php}
+\lstinputlisting{../logout.php}
+
+\newpage\section{paper\_set.php}
+\lstinputlisting{../paper_set.php}
+
+\newpage\section{settings/settings.php}
+\lstinputlisting{../settings/settings.php}
+
+\newpage\section{settings/styles.css}
+\lstinputlisting{../settings/styles.css}
+
+\newpage\section{settings/db/mat.php}
+\lstinputlisting{../settings/db/mat.php}
+
+\end{document}

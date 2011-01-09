@@ -1,0 +1,13 @@
+.*
+.svn
+!.gitignore
+
+krw.*
+doc/tmp/*
+extra/*
+
+doc/*
+!doc/*.tex
+!doc/*.bib
+
+class/Calendar.php
