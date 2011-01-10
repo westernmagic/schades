@@ -25,13 +25,15 @@
 	*	@version 0.8
 	*/
 	
+	require_once( 'include.php' ) ;
+	
 	/**
 	*	@brief DB class
 	*	
 	*	@details Used to connect and query a database
 	*	
 	*/
-	abstract class DB {
+	abstract class DB extends SuperClass {
 			
 			/**
 			*	@breif string
@@ -69,7 +71,7 @@
 			*	@param string $db database name, optional, default 'mat'
 			*/
 			public static function init( $db = 'schades' ) {
-				require_once( './settings/db/' . $db . '.php' ) ;
+				require_once( 'settings/db/' . $db . '.php' ) ;
 				
 				self::$server = $server ;
 				self::$user = $user ;
@@ -147,5 +149,4 @@
 	
 	}
 	
-	DB::init( 'schades' ) ;
 ?>

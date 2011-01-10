@@ -25,16 +25,12 @@
 	*	@version 0.8
 	*/
 	
-	require_once( 'Person.php' ) ;
-	require_once( 'Period.php' ) ;
-	require_once( 'Date.php' ) ;
-	//require_once( 'settings.php' ) ;
-	require_once( 'DB.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	/**
 	*	@brief Excuse class
 	*/
-	class Excuse {
+	class Excuse extends SuperClass {
 		
 		/**
 		*	@brief int

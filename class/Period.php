@@ -25,15 +25,14 @@
 	*	@version 0.8
 	*/
 	
-	require_once( 'Date.php' ) ;
-	require_once( 'DB.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	/**
 	*	@brief Period class
 	*	
 	*	$details School or absence term.
 	*/
-	class Period {
+	class Period extends SuperClass {
 		
 		/**
 		*	@brief int

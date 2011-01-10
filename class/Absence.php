@@ -25,15 +25,12 @@
 	*	@version 0.8
 	*/
 	
-	//require_once( 'settings.php' ) ;
-	require_once( 'Date.php' ) ;
-	require_once( 'Printer.php' ) ;
-	require_once( 'DB.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	/**
 	*	@brief Absence class
 	*/
-	class Absence {
+	class Absence extends SuperClass {
 		
 		/**
 		*	@brief int

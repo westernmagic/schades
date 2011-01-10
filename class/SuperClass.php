@@ -25,6 +25,8 @@
 	*	@version 0.8
 	*/
 	
+	require_once( 'include.php' ) ;
+	
 	/**
 	*	@brief A class defining (most) magic methods, to be extended by all others. The only NOT final method is __invoke().
 	*/
@@ -107,7 +109,7 @@
 		/**
 		*	$brief Throw an exception.
 		*/
-		final public function __callStatic( $name , $args ) {
+		final static public function __callStatic( $name , $args ) {
 			throw new Exception( 'Static method ' . $name . '()' . ' not defined with ' . count( $args ) . ' arguments'  ) ;
 		}
 		

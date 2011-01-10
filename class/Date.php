@@ -25,8 +25,7 @@
 	*	@version 0.8
 	*/
 	
-	//require_once( "settings.php" ) ;
-	require_once( 'Period.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	/**
 	*	@brief Date class

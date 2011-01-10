@@ -25,15 +25,14 @@
 	*	@version 0.8
 	*/
 	
-	//require_once( 'settings.php' ) ;
-	require_once( 'Date.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	/**
 	*	@brief Queue class
 	*	
 	*	@details Represents a queue item.
 	*/
-	class Queue{
+	class Queue extends Superclass {
 		
 		/**
 		*	@brief int

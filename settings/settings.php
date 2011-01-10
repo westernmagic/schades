@@ -30,10 +30,11 @@
 	*	
 	*/
 	
-	//require_once( 'DB.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	ini_set( 'memory_limit' , '32M' ) ;
 	const USE_TIDY = false ;
+	DB::init( 'schades' ) ;
 	
 		
 

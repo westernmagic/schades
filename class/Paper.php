@@ -25,16 +25,14 @@
 	*	@version 0.8
 	*/
 	
+	require_once( 'include.php' ) ;
 	require_once( 'lib/tcpdf/config/lang/eng.php' ) ;
 	require_once( 'lib/tcpdf/tcpdf.php' ) ;
-	require_once( 'Printer.php' ) ;
-	require_once( 'Date.php' ) ;
-	require_once( 'Person.php' ) ;
 	
 	/**
 	*	@brief Paper class
 	*/
-	class Paper extends TCPDF {
+	class Paper extends SuperClass , TCPDF {
 	
 		public function __construct( $type , Person $from , Person $to , $arg = NULL ) {
 			parent::__construct( 'P' , 'mm' , 'A4' , true , 'UTF-8', false ) ; 

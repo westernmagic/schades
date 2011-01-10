@@ -25,20 +25,14 @@
 	*	@version 0.8
 	*/
 	
-	require_once( 'Person.php' ) ;
-	require_once( 'Date.php' ) ;
-	require_once( 'Absence.php' ) ;
-	require_once( 'Form.php' ) ;
-	require_once( 'Course.php' ) ;
-	require_once( 'Period.php' ) ;
-	require_once( 'settings/settings.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	/**
 	*	@brief Printer class
 	*	
 	*	@details Parses information into HTML code.
 	*/
-	abstract class Printer {
+	abstract class Printer extends Superclass {
 		
 		/**
 		*	@return string legend table

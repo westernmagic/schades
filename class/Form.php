@@ -25,15 +25,12 @@
 	*	@version 0.8
 	*/
 	
-	//require_once( 'settings.php' ) ;
-	require_once( 'Person.php' ) ;
-	require_once( 'Period.php' ) ;
-	require_once( 'DB.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	/**
 	*	@brief Form class
 	*/
-	class Form {
+	class Form extends SuperClass {
 		
 		/**
 		*	@brief string

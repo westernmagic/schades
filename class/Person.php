@@ -25,20 +25,12 @@
 	*	@version 0.8
 	*/
 	
-	//require_once( 'settings.php' ) ;
-	require_once( 'Date.php' ) ;
-	require_once( 'Form.php' ) ;
-	require_once( 'Course.php' ) ;
-	require_once( 'Absence.php' ) ;
-	require_once( 'Period.php' ) ;
-	require_once( 'Excuse.php' ) ;
-	require_once( 'Queue.php' ) ;
-	require_once( 'DB.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	/**
 	*	@brief Person class
 	*/
-	class Person {
+	class Person extends SuperClass {
 		
 		/**
 		*	@brief int
