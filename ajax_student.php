@@ -36,7 +36,7 @@
 	
 	session_start() ;
 	if( isset( $_GET["abs_pr"] ) ) {
-			$abs_pr = new Period( $_GET["abs_pr"] ) ;
+		$abs_pr = new Period( $_GET["abs_pr"] ) ;
 	} else {
 		$abs_pr = new Period( abs_pr ) ;
 	}
