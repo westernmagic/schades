@@ -36,7 +36,7 @@
 	abstract class DB extends SuperClass {
 			
 			/**
-			*	@breif string
+			*	@brief string
 			*/
 			private static $server ;
 			
@@ -51,7 +51,7 @@
 			private static $password ;
 			
 			/**
-			*	@breif string
+			*	@brief string
 			*/
 			private static $db_name ;
 			

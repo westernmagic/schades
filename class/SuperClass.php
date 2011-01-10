@@ -33,7 +33,9 @@
 	abstract class SuperClass {
 		
 		/**
-		*	$brief Run the accessor, if it exists.
+		*	@brief Run the accessor, if it exists.
+		*
+		*	@param string $name The name of the property to be accessed.
 		*/
 		final public function __get( $name ) {
 			if( property_exists( get_called_class() , $name ) ) {
@@ -48,7 +50,9 @@
 		}
 		
 		/**
-		*	$brief Run the corresponding isset, if it exists.
+		*	@brief Run the corresponding isset, if it exists.
+		*
+		*	@param string $name The name of the property to be checked.
 		*/
 		final public function __isset( $name ) {
 			if( property_exists( get_called_class() , $name ) ) {
@@ -63,7 +67,10 @@
 		}
 		
 		/**
-		*	$brief Run the mutator, if it exists.
+		*	@brief Run the mutator, if it exists.
+		*
+		*	@param string $name The name of the property to be set.
+		*	@param mixed $value The value the property should be set to.
 		*/
 		final public function __set( $name , $value ) {
 			if( property_exists( get_called_class() , $name ) ) {
@@ -78,7 +85,9 @@
 		}
 		
 		/**
-		*	$brief Run the unsetter, if it exists.
+		*	@brief Run the unsetter, if it exists.
+		*
+		*	@param string $name The property to be unset.
 		*/
 		final public function __unset( $name ) {
 			if( property_exists( get_called_class() , $name ) ) {
@@ -93,28 +102,36 @@
 		}
 		
 		/**
-		*	$brief Dump the class.
+		*	@brief Dump the class.
 		*/
 		final public function __toString() {
 			return var_dump( $this ) ;
 		}
 		
 		/**
-		*	$brief Throw an exception.
+		*	@brief Throw an exception on unknown method.
+		*
+		*	@param string $name The name of the method.
+		*	@param array mixed $args The arguments to be passed.
 		*/
 		final public function __call( $name , $args ) {
 			throw new Exception( $name . '()' . ' not defined with ' . count( $args ) . ' arguments'  ) ;
 		}
 		
 		/**
-		*	$brief Throw an exception.
+		*	@brief Throw an exception on unknown static method.
+		*
+		*	@param string $name The name of the method.
+		*	@param array mixed $args The arguments to be passed.
 		*/
 		final static public function __callStatic( $name , $args ) {
 			throw new Exception( 'Static method ' . $name . '()' . ' not defined with ' . count( $args ) . ' arguments'  ) ;
 		}
 		
 		/**
-		*	$brief Throw an exception. Only overrideable method in this class.
+		*	@brief Throw an exception when the class is called as a function.
+		*
+		*	@param array mixed $args	The arguments to be passed.
 		*/
 		public static function __invoke( $args ) {
 			throw new Exception( 'The class ' . get_called_class() . ' is not callable' ) ;
