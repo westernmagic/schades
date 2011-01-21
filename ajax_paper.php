@@ -27,7 +27,7 @@
 	*	@brief AJAX paper setting page.
 	*/
 	
-	require_once( 'class/Printer.php' ) ;
+	require_once( 'include.php' ) ;
 		
 	$line = '<form style="width: 100% ;" ><table style="margin-left: auto ; margin-right: auto ;" ><thead></thead><tbody>' ;
 	$line .= '<tr><td style="text-align: center ;" id="type" ><select>' ;

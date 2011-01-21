@@ -29,9 +29,7 @@
 	*	@details Returns subtoolbars.
 	*/
 	
-	require_once( 'class/Printer.php' ) ;
-	require_once( 'class/Period.php' ) ;
-	//require_once( 'settings/settings.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	session_start() ;
 	

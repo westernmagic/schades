@@ -29,13 +29,7 @@
 	*	@details Returns the absence tables.
 	*/
 	
-	//require_once( 'settings.php' ) ;
-	require_once( 'class/Person.php' ) ;
-	require_once( 'class/Form.php' ) ;
-	require_once( 'class/Course.php' ) ;
-	require_once( 'class/Date.php' ) ;
-	require_once( 'class/Printer.php' ) ;
-	require_once( 'class/Period.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	session_start() ;
 	if( isset( $_SESSION[ 'person' ] ) ) {

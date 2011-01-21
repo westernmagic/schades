@@ -29,10 +29,8 @@
 	*	@details The core of the application. Evokes all other pages.
 	*/
 	
-	require_once( 'class/Person.php' ) ;
-	require_once( 'class/Period.php' ) ;
-	require_once( 'class/Printer.php' ) ;
-	//require_once( 'class/settings.php' ) ;
+	require_once( 'include.php' ) ;
+	
 	session_start();
 	
 	if( isset( $_SESSION[ 'person' ] ) ) {

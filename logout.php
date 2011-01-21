@@ -29,6 +29,8 @@
 	*	@details Deletes the session, logs the user out and redirects him to login.php .
 	*/
 	
+	require_once( 'include.php' ) ;
+	
 	if( isset( $_GET["type"] ) ) {
 		$type = $_GET["type"] ;
 	} else {

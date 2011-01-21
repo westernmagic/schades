@@ -16,24 +16,28 @@
     along with schades.  If not, see <http://www.gnu.org/licenses/>.
 	*/
 	/**
-	*	@file settings.php
-	*	
-	*	@author Michal Sudwoj <mswoj61@gmail.com>
-	*	@copyright Michal Sudwoj
-	*	@link http://www.sourceforge.com/projects/schades/
-	*	@licence http://www.fsf.org/licensing/licenses/agpl-3.0.html AGPL 3.0
-	*	@version 0.8
-	*	
-	*	@brief Global settings file
-	*	
-	*	@details Configurable settings file.
-	*	
-	*/
+	 * 	@file settings.php
+	 * 	
+	 * 	@author Michal Sudwoj <mswoj61@gmail.com>
+	 * 	@copyright Michal Sudwoj
+	 * 	@link http://www.sourceforge.com/projects/schades/
+	 * 	@licence http://www.fsf.org/licensing/licenses/agpl-3.0.html AGPL 3.0
+	 * 	@version 0.8
+	 * 	
+	 * 	@brief Global settings file
+	 * 	
+	 * 	@details Configurable settings file.
+	 * 	
+	 */
 	
 	require_once( 'include.php' ) ;
 	
-	ini_set( 'memory_limit' , '32M' ) ;
-	const USE_TIDY = false ;
+	define(           USE_TIDY        ,  false ) ;
+	
+	ini_set(         'memory_limit'   , '32M'  ) ;
+	error_reporting(  -1                       ) ;
+	ini_set(         'display_errors' , 'On'   ) ;
+	
 	DB::init( 'schades' ) ;
 	
 		

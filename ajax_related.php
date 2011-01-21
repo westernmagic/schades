@@ -27,9 +27,7 @@
 	*	@brief AJAX mail-to-related page.
 	*/
 	
-	//require_once( 'settings.php' ) ;
-	require_once( 'class/Person.php' ) ;
-	require_once( 'class/Period.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	if( isset( $_GET[ 'abs_pr' ] ) ) {
 		$pr = new Period( $_GET[ 'abs_pr' ] ) ;

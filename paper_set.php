@@ -26,10 +26,7 @@
 	*	
 	*	@brief returns PDF document
 	*/
-	require_once( 'class/Paper.php' ) ;
-	require_once( 'class/Person.php' ) ;
-	require_once( 'class/Period.php' ) ;
-	require_once( 'class/Date.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	new Paper( $type , $from , $to , $arg ) ;
 ?>

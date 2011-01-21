@@ -27,6 +27,8 @@
 	*	@brief Script that executes actions on queue items
 	*/
 	
+	require_once( 'include.php' ) ;
+	
 	//0 = No ; 1 = Yes ; 2 = Mail ; 3 = Print ; 4 = Akn
 	switch( $type ) {
 		case 401:

@@ -29,10 +29,7 @@
 	*	@details Returns the student subtoolbar.
 	*/
 	
-	require_once( 'class/Printer.php' ) ;
-	require_once( 'class/Person.php' ) ;
-	require_once( 'class/Period.php' ) ;
-	//require_once( 'settings.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	session_start() ;
 	if( isset( $_GET["abs_pr"] ) ) {

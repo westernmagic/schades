@@ -29,11 +29,7 @@
 	*	@details Adds and deletes excuses.
 	*/
 	
-	//require_once( 'settings.php' ) ;
-	require_once( 'class/Person.php' ) ;
-	require_once( 'class/Period.php' ) ;
-	require_once( 'class/Excuse.php' ) ;
-	require_once( 'class/DB.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	session_start() ;
 	if( isset( $_SESSION[ 'person' ] ) ) {

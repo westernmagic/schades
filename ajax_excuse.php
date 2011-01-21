@@ -29,10 +29,7 @@
 	*	@details Returns the excuse page.
 	*/
 	
-	//require_once( 'settings/settings.php' ) ;
-	require_once( 'class/Excuse.php' ) ;
-	require_once( 'class/Period.php' ) ;
-	require_once( 'class/Printer.php' ) ;
+	require_once( 'incdule.php' ) ;
 	
 	if( isset( $_GET[ 'abs_pr' ] ) ) {
 		$pr = new Period( $_GET[ 'abs_pr' ] ) ;

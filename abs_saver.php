@@ -29,8 +29,7 @@
 	*	@details Saves all the absences in $_POST .
 	*/
 	
-	require_once( 'class/Absence.php' ) ;
-	require_once( 'class/Person.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	session_start() ;
 	$exec = $_SESSION['person'] ;

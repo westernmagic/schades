@@ -31,10 +31,7 @@
 	*	@todo dynamic display of warining message, redirection if no JavaScript/AJAX.
 	*/
 	
-	//require_once( 'class/settings.php' ) ;
-	require_once( 'class/Person.php' ) ;
-	require_once( 'class/Period.php' ) ;
-	require_once( 'class/DB.php' ) ;
+	require_once( 'include.php' ) ;
 	
 	if( isset( $_POST["user"] ) ) {
 		$user = stripslashes( $_POST["user"] ) ;
