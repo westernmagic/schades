@@ -78,12 +78,12 @@
 					self::$password   = $password ;
 					self::$db_name    = $db_name  ;
 					self::$tables     = $tables   ;
-					self::$link       =  mysql_pconnect( self::$server , self::$user , self::$password ) ;
+					self::$link       =  mysql_connect( self::$server , self::$user , self::$password ) ;
 					
 					list( $a , $b , $c ) = sscanf( mysql_get_server_info( self::$link ) , '%i.%i.%i' ) ;
 					if( $a > 4 || ( $a == 4 && $b > 1 ) || ( $a == 4 && $b == 1 && $c >= 3 ) ) {
 						 mysql_close( self::$link ) ;
-						 self::$link = new mysqli( 'p:' . self::$server , self::$user , self::$password , self::$db_name ) ;
+						 self::$link = new mysqli( self::$server , self::$user , self::$password , self::$db_name ) ;
 					} else {
 						mysql_select_db( self::$db_name , self::$link ) ;
 					}
