@@ -109,7 +109,7 @@
 			*	@return string escaped
 			*/
 			public static function escape( $var ) {
-				if( is_a( self::$link , 'mysqli' ) ) {
+				if( self::$link instanceof 'mysqli' ) {
 					return self::$link->real_escape_string( $var ) ;
 				} else {
 					return mysql_real_escape_string( $var , self::$link ) ;
@@ -121,7 +121,7 @@
 			*	@return resource|bool resultset
 			*/
 			public static function query( $query ) {
-				if( is_a( self::$link , 'mysqli' ) ) {
+				if( self::$link instanceof 'mysqli' ) {
 					return self::$link->query( $query ) ;
 				} else {
 					return mysql_query( $query , self::$link ) ;
@@ -133,7 +133,7 @@
 			*	@return int|bool number of rows
 			*/
 			public static function count( $resultset ) {
-				if( is_a( $resultset , 'mysqli_result' ) && property_exists( $resultset , 'num_rows' ) ) {
+				if( $resultset instanceof 'mysqli_result' && property_exists( $resultset , 'num_rows' ) ) {
 					return $resultset->num_rows ;
 				} else {
 					return mysql_num_rows( $resultset ) ;
@@ -145,7 +145,7 @@
 			*	@return array|bool row of $resultset
 			*/
 			public static function fetch( $resultset ) {
-				if( is_a( $resultset , 'mysqli_result' ) && method_exists( $resultset , 'fetch_assoc' ) ) {
+				if( $resultset instanceof 'mysqli_result' && method_exists( $resultset , 'fetch_assoc' ) ) {
 					return $resultset->fetch_assoc() ;
 				} else {
 					return mysql_fetch_assoc( $resultset ) ;
@@ -157,7 +157,7 @@
 			*	@return int|bool
 			*/
 			public static function insertId() {
-				if( is_a( self::$link , 'mysqli' ) ) {
+				if( self::$link instanceof 'mysqli' ) {
 					return self::$link->insert_id() ;
 				} else {
 					return mysql_insert_id( self::$link ) ;
@@ -171,7 +171,7 @@
 			*	@return bool
 			*/
 			public static function free( $resultset ) {
-				if( is_a( $resultset , 'mysqli_result' ) && method_exists( $resultset , 'free' ) ) {
+				if( $resultset instanceof 'mysqli_result' && method_exists( $resultset , 'free' ) ) {
 					return $resultset->free() ;
 				} else {
 					return mysql_free_result( $resultset ) ;
