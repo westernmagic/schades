@@ -39,7 +39,9 @@
 		*/
 		final public function __get( $name ) {
 			if( property_exists( get_called_class() , $name ) ) {
-				if( method_exists( $this , ( $method = 'get_' . $name ) ) ) {
+				if( method_exists( $this , ( $method = 'get' . ucfirst( $name ) ) ) ) {
+					return $this->$method() ;
+				} elseif( method_exists( $this , ( $method = 'get_' . $name ) ) ) {
 					return $this->$method() ;
 				} else {
 					throw new Exception( 'Getting ' . $name . ' not allowed' ) ;
@@ -56,7 +58,9 @@
 		*/
 		final public function __isset( $name ) {
 			if( property_exists( get_called_class() , $name ) ) {
-				if( method_exists( $this , ( $method = 'isset_' . $name ) ) ) {
+				if( method_exists( $this , ( $method = 'isset' . ucfirst( $name ) ) ) ) {
+					return $this->$method() ;
+				} elseif( method_exists( $this , ( $method = 'isset_' . $name ) ) ) {
 					return $this->$method() ;
 				} else {
 					throw new Exception( 'IsSetting ' . $name . ' not allowed' ) ;
@@ -74,7 +78,9 @@
 		*/
 		final public function __set( $name , $value ) {
 			if( property_exists( get_called_class() , $name ) ) {
-				if( method_exists( $this , ( $method = 'set_' . $name ) ) ) {
+				if( method_exists( $this , ( $method = 'set' . ucfirst( $name ) ) ) ) {
+					$this->$method( $value ) ;
+				} elseif( method_exists( $this , ( $method = 'set_' . $name ) ) ) {
 					$this->$method( $value ) ;
 				} else {
 					throw new Exception( 'Setting ' . $name . ' not allowed' ) ;
@@ -91,7 +97,9 @@
 		*/
 		final public function __unset( $name ) {
 			if( property_exists( get_called_class() , $name ) ) {
-				if( method_exists( $this , ( $method = 'unset_' . $name ) ) ) {
+				if( method_exists( $this , ( $method = 'unset' . ucfirst( $name ) ) ) ) {
+					$this->$method() ;
+				} elseif( method_exists( $this , ( $method = 'unset_' . $name ) ) ) {
 					$this->$method() ;
 				} else {
 					throw new Exception( 'Unsetting ' . $name . ' not allowed' ) ;
