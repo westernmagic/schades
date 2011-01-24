@@ -63,7 +63,7 @@
 						<td class="toolcell" onclick="ajaxMain( 1 ) ;">Absences</td>
 						<td class="toolcell" onclick="ajaxMain( 0 ) ;">Settings</td>
 						<td class="toolcell" onclick="window.location = 'logout.php?type=logout' ;">Logout</td>
-						<td class="toolcell" onclick="redirect( 'http://sourceforge.net/projects/schades' ) ;" >Bug Report / Feature Request / Source</td>
+						<td class="toolcell" onclick="redirect( 'http://http://193.17.76.37/redmine/' ) ;" >Bug Report / Feature Request / Source</td>
 					</tr>
 				</tbody>
 			</table>
