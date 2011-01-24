@@ -16,13 +16,32 @@
 	*/
 
 	require_once( 'include.php' ) ;
-
+	
+	/**
+	* 	@brief Singleton class, children can only have on instance.
+	*/
 	class Singleton {
+		
+		/**
+		* 	@brief Array of all the instances.
+		*/
 		private static $instances = array() ;
 		
+		/**
+		* 	@brief Stop childrens' constructor from being called outside of them.
+		*/
 		protected __construct() {}
+		
+		/**
+		*	@brief Cloning is not allowed.
+		*/
 		private final __clone() {}
 		
+		/**
+		*	@brief Get the child's instance.
+		*
+		*	@return self::$instance[ $class ]
+		*/
 		public getInstance() {
 			$class = get_called_class() ;
 			if( !isset( self::$instances[ $class ] ) ) {
