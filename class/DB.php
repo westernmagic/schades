@@ -80,13 +80,13 @@
 					self::$tables     = $tables   ;
 					self::$link       =  mysql_connect( self::$server , self::$user , self::$password ) ;
 					
-					list( $a , $b , $c ) = sscanf( mysql_get_server_info( self::$link ) , '%i.%i.%i' ) ;
-					if( $a > 4 || ( $a == 4 && $b > 1 ) || ( $a == 4 && $b == 1 && $c >= 3 ) ) {
-						 mysql_close( self::$link ) ;
-						 self::$link = new mysqli( self::$server , self::$user , self::$password , self::$db_name ) ;
-					} else {
+					//list( $a , $b , $c ) = sscanf( mysql_get_server_info( self::$link ) , '%i.%i.%i' ) ;
+					//if( $a > 4 || ( $a == 4 && $b > 1 ) || ( $a == 4 && $b == 1 && $c >= 3 ) ) {
+					//	 mysql_close( self::$link ) ;
+					//	 self::$link = new mysqli( self::$server , self::$user , self::$password , self::$db_name ) ;
+					//} else {
 						mysql_select_db( self::$db_name , self::$link ) ;
-					}
+					//}
 				}
 			}
 			
@@ -111,9 +111,11 @@
 			public static function escape( $var ) {
 				if( self::$link instanceof MySQLi ) {
 					return self::$link->real_escape_string( $var ) ;
-				} else {
+				} elseif( get_resource_type( self::$link ) == 'mysql link' ) {
 					return mysql_real_escape_string( $var , self::$link ) ;
 				}
+				
+				return false ;
 			}
 			
 			/**
@@ -123,9 +125,11 @@
 			public static function query( $query ) {
 				if( self::$link instanceof MySQLi ) {
 					return self::$link->query( $query ) ;
-				} else {
+				} elseif( get_resource_type( self::$link ) == 'mysql link' ) {
 					return mysql_query( $query , self::$link ) ;
 				}
+				return false ;
+				
 			}
 			
 			/**
@@ -135,9 +139,11 @@
 			public static function count( $resultset ) {
 				if( $resultset instanceof MySQLi_Result && property_exists( $resultset , 'num_rows' ) ) {
 					return $resultset->num_rows ;
-				} else {
+				} elseif( get_resource_type( $resultset ) == 'mysql result' ) {
 					return mysql_num_rows( $resultset ) ;
 				}
+				
+				return false ;
 			}
 			
 			/**
@@ -147,9 +153,11 @@
 			public static function fetch( $resultset ) {
 				if( $resultset instanceof MySQLi_Result && method_exists( $resultset , 'fetch_assoc' ) ) {
 					return $resultset->fetch_assoc() ;
-				} else {
+				} elseif( get_resource_type( $resultset ) == 'mysql result' ) {
 					return mysql_fetch_assoc( $resultset ) ;
 				}
+				
+				return false ;
 			}
 			
 			/**
@@ -159,9 +167,11 @@
 			public static function insertId() {
 				if( self::$link instanceof MySQLi ) {
 					return self::$link->insert_id() ;
-				} else {
+				} elseif( get_resource_type( self::$link ) == 'mysql link' ) {
 					return mysql_insert_id( self::$link ) ;
 				}
+				
+				return false ;
 			}
 			
 			/**
@@ -173,9 +183,11 @@
 			public static function free( $resultset ) {
 				if( $resultset instanceof MySQLi_Result && method_exists( $resultset , 'free' ) ) {
 					return $resultset->free() ;
-				} else {
+				} elseif( get_resource_type( $resultset ) == 'mysql result' ) {
 					return mysql_free_result( $resultset ) ;
 				}
+				
+				return false ;
 			}
 	
 	}
