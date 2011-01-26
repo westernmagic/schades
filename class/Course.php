@@ -116,7 +116,7 @@
 		*	@return string $sqlForms
 		*/
 		public function getSqlForms() {
-			if( !isset( $this->sqlforms ) ) {
+			if( !isset( $this->sqlForms ) ) {
 				$forms = $this->getForms() ;
 				$sqlForms = '' ;
 				foreach( $forms as $form ) {

@@ -207,6 +207,7 @@
 		*	@return Absence
 		*/
 		public static function newAbsence( $ad , $week , $day , $lesson , $type , $exec ) {
+			/*
 			$query = 'INSERT INTO ' . DB::name( 'abs_abs' ) ;
 			$query .= ' SET' ;
 			$query .= ' ' . DB::name( 'abs_abs' , 'abs_id' ) . ' = DEFAULT ,' ;
@@ -246,16 +247,25 @@
 					$query .= ' ' . DB::name( 'abs_log_abs' , 'after') . ' = "' . DB::escape( $type ) . '" ,' ;
 					$query .= ' ' . DB::name( 'abs_log_abs' , 'executor_id' ) . ' = ' . DB::escape( $exec ) . ' ,' ;
 					$query .= ' ' . DB::name( 'abs_log_abs' , 'date_time' ) . ' = DEFAULT ;' ;
-					
-					if( DB::query( $query ) ) {
-						return new Absence( $id ) ;
+					*/
+					$query = 'SELECT set_abs_in( '       . DB::escape( $ad     ) . ' , '
+					                                     . DB::escape( $week   ) . ' , '
+					                                     . DB::escape( $day    ) . ' , '
+					                                     . DB::escape( $lesson ) . ' , '
+					                               . "'" . DB::escape( $type   ) . "' , "
+					                                     . DB::escape( $exec   ) . ' ) as id' ;
+					if( $resultset = DB::query( $query ) ) {
+						if( DB::count( $resultset ) == 1 ) {
+							$row = DB::fetch( $resultset ) ;
+							return new Absence( $row[ 'id' ] ) ;
+						}
 					} else {
 						throw new ErrorException( 'Absence logging error.' , 891 , 1 , 'Absence.php' , 135 ) ;
 					}
-				}
-			} else {
-				throw new ErrorException( 'Absence inserting error.' , 801 , 1 , 'Absence.php' , 139 ) ;
-			}
+				//}
+			//} else {
+			//	throw new ErrorException( 'Absence inserting error.' , 801 , 1 , 'Absence.php' , 139 ) ;
+			//}
 			return false ;
 			
 		}
