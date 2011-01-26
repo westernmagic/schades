@@ -163,6 +163,7 @@
 		*	@deprecated never used
 		*	@param string $var type
 		*	@return bool
+		*	@deprecated doe not log!
 		*/
 		public function setType( $var ) {
 			$query = "UPDATE " . DB::name( 'abs_abs' ) ;

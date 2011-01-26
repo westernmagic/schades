@@ -47,6 +47,8 @@
 			'day'              => 'day'              ,
 			'lesson'           => 'lesson'           ,
 			'abs_type'         => 'abs_type'         ,
+			'in'               => 'in'               ,
+			'out'              => 'out'              ,
 			'abs_id'           => 'abs_id'           ,
 			'ad_id'            => 'ad_id'            
 		) ,
@@ -75,6 +77,7 @@
 			'log_abs_id'       => 'log_abs_id'       ,
 			'abs_id'           => 'abs_id'           ,
 			'after'            => 'after'            ,
+			'in_out'           => 'in_out'           ,
 			'executor_id'      => 'executor_id'      ,
 			'date_time'        => 'date_time'        
 		) ,
