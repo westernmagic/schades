@@ -262,5 +262,24 @@ SELECT DISTINCT `ad_ad`.`surname` , `ad_ad`.`first_name` , `tt_tt`.`week` , `tt_
 	      AND `tt_tt`.`week`               = ?
 	ORDER BY `ad_ad`.`surname` , `ad_ad`.`first_name` , `tt_tt`.`day` , `tt_tt`.`lesson` ; #error
 
-
+# Permissions view
+SELECT `t1`.`ad_id`      AS `student`  ,
+       `t2`.`ad_id`      AS `inquirer` ,
+       `t2`.`ad_pg_type` AS `type`     ,
+       `pg`.`ad_pr`      AS `ad_pr`
+	FROM `ad_pg` AS `t1`
+	JOIN `pg`            ON `pg`.`pg_id` = `t1`.`pg_id`
+	JOIN `ad_pg` AS `t2` ON `t2`.`pg_id` = `t1`.`pg_id`
+	WHERE     `t1`.`ad_pg_type`  = 1 # Student
+	      AND `t2`.`ad_pg_type` != 1 # Not Student
+	UNION
+		SELECT `t3`.`ad_id`      AS `student`  ,
+		       `t4`.`ad_id`      AS `inquirer` ,
+		       `t4`.`ad_co_type` AS `type`     ,
+		       `co_co`.`pr_id`   AS `ad_pr`
+			FROM `ad_co` AS `t3`
+			JOIN `co_co`         ON `co_co`.`co_id` = `t3`.`co_id`
+			JOIN `ad_co` AS `t4` ON `t4`.`co_id`    = `t3`.`co_id`
+			WHERE     `t3`.`ad_co_type`  = 1 # Student
+			      AND `t4`.`ad_co_type` != 1 # Not Student
 
