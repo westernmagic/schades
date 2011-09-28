@@ -270,8 +270,9 @@ SELECT `t1`.`ad_id`      AS `student`  ,
 	FROM `ad_pg` AS `t1`
 	JOIN `pg`            ON `pg`.`pg_id` = `t1`.`pg_id`
 	JOIN `ad_pg` AS `t2` ON `t2`.`pg_id` = `t1`.`pg_id`
-	WHERE     `t1`.`ad_pg_type`  = 1 # Student
-	      AND `t2`.`ad_pg_type` != 1 # Not Student
+	WHERE          `t1`.`ad_pg_type`  = 1 # Student
+	      AND (    `t2`.`ad_pg_type` != 1 # Not Student
+	            OR `t1`.`ad_id`       = `t2`.`ad_id` )
 	UNION
 		SELECT `t3`.`ad_id`      AS `student`  ,
 		       `t4`.`ad_id`      AS `inquirer` ,
